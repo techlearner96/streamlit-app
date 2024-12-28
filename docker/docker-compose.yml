@@ -1,0 +1,15 @@
+version: "3.9"  # Specify the Compose file version
+
+services:
+  streamlit-app:
+    build:
+      context: ..  # Build context is the project root
+      dockerfile: docker/streamlit/Dockerfile  # Path to the Dockerfile
+    ports:
+      - "8501:8501"  # Map port 8501 of the container to port 8501 on the host
+    volumes:
+      - ../leaseManagerUI.py:/app/leaseManagerUI.py  # Mount the current directory into the container for live updates (optional)
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0  # Ensure Streamlit runs on all interfaces
+
