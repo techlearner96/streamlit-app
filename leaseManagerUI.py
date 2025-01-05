@@ -18,7 +18,7 @@ def fetch_lease_info_response(url, user_query):
             # st.write("Fetched from cache!")
             history.append({
                 'role': cached_response[0],
-                'content': cached_response[1]
+                'content': str(cached_response[1])
             })
     payload = {"query": user_query, "history": history}
     # If not cached, make an API call
